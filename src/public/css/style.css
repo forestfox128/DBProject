@@ -48,7 +48,7 @@ a {
 .a-inside{padding:4px 10px;border:1px solid #fff;text-decoration:none;}
 .a-inside.edit{background-color:#005000;color:#fff;}
 .a-inside.buy{background-color:#123;color:#fff;}
-.a-inside.search{background-color:#123;color:#fff;height: 31px;}
+.a-inside.search{background-color:#123;color:#fff;height: 28px;}
 .a-inside.delete{background-color:#500000;color:#fff;}
 
 input[type="text"]{
@@ -61,9 +61,14 @@ input[type="text"]{
     background-color:#D23641;color:#fff;
     border:1px solid #800000;color:#fff;
     padding:8px 35px;font-weight:bold;
-   
-
 }
+
+.bigbtn{
+    background-color:#223344;color:#fff;
+    border:1px solid #000515;color:#fff;
+    padding:8px 35px;font-weight:bold;
+}
+
 input[type="submit"]{
 
     border:1px solid #123;color:#fff;

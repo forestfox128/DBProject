@@ -6,32 +6,19 @@ exports.index = function (req, res) {
 
     req.getConnection(function (err, connection) {
 
-        var user = req.query.user;
+        var nazwa = req.query.user;
 
         var filter = "";
-        if (user) {
+        if (nazwa) {
             filter = 'WHERE nazwa = ?';
         }
 
-        var query = connection.query('SELECT * FROM Produkty ' + filter, user, function (err, rows) {
+        var query = connection.query('SELECT * FROM Produkty ' + filter, nazwa, function (err, rows) {
             if (err) {
                 console.log("Error Selecting : %s ", err);
             }
 
-            res.render('index', {page_title: 'AlkoSZOP', data: rows, user: user});
+            res.render('index', {page_title: 'AlkoSZOP - Strona Główna', data: rows, user: nazwa});
         });
-
-        // var query = connection.query('SELECT * FROM Produkty', function (err, rows) {
-        //
-        //
-        //     if (err)
-        //         console.log("Error Selecting : %s ", err);
-        //
-        //     res.render('index', { page_title: "AlkoSZOP", data: rows });
-        //
-        //
-        // });
-
-        //console.log(query.sql);
     });
 };
