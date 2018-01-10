@@ -33,8 +33,8 @@ app.use(
     connection(mysql,{
         
         host: 'localhost',
-        user: 'root',
-        password : 'Varden97',
+        user: '',
+        password : '',
         database:'sample'
     },'request')
 );//route index, hello world
