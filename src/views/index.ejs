@@ -1,55 +1,76 @@
 <%- include layouts/header.ejs %>
 
 <html>
-    <head>
-        <title><%=(locals.title) ? title :''%></title>
-    </head>
-    <body>
-        <input type="button" name="" value="Produkty - Panel" class="cancel" onClick="window.location.href = '/produkty';">
-        <div class="page-data">
-            <div class="data-table">
-                <table border="1" cellpadding="7" cellspacing="7">
-                    <tr>
-                        <th width="50px">No</th>
-                        <th width="50px">Produkt</th>
-                        <th width="50px">Producent</th>
-                        <th>Nazwa</th>
-                        <th>Cena</th>
-                        <th>Opis</th>
-                        <th>Typ</th>
-                        <th>Ilość</th>
-                        <th width="120px">Akcja</th>
-                    </tr>
+<head>
+    <title>AlkoSZOP</title>
+    <script>
+        function Search() {
+            var search = document.getElementsByName('name')[0].value;
+            window.location.href = "/?user=" + search;
+        }
+    </script>
+</head>
+<body>
+<br>
+<div align="center">
+    <input type="button" name="" value="Produkty - Panel" class="cancel" onClick="window.location.href = '/produkty';">
+    <input type="button" name="" value="Producenci - Panel" class="cancel"
+           onClick="window.location.href = '/produkty';">
+    <input type="button" name="" value="Typy - Panel" class="cancel" onClick="window.location.href = '/produkty';">
+    <input type="button" name="" value="Adresy" class="cancel" onClick="window.location.href = '/produkty';">
+    <input type="button" name="" value="Zamówienia" class="cancel" onClick="window.location.href = '/produkty';">
+    <input type="button" name="" value="Dostawy" class="cancel" onClick="window.location.href = '/produkty';">
+    <input type="button" name="" value="Wysyłki" class="cancel" onClick="window.location.href = '/produkty';">
+</div>
 
-                    <% if(data.length){
+<div class="page-data">
+    <br>
+    <div class="search" align="center">
+        <label class="a-inside search">Wyszukiwarka：</label>
+        <input type="text" name="name" class="a-inside search" value="<%= user %>"
+               placeholder="Powiedz, czego szukasz...">
+        <input type="button" name="search" value="Szukaj" class="a-inside search" class="btn" onclick="Search();">
+    </div>
+    <br>
+    <div class="data-table">
+        <table border="1" cellpadding="7" cellspacing="7">
+            <tr>
+                <th width="50px">No</th>
+                <th>Nazwa</th>
+                <th>Cena</th>
+                <th>Opis</th>
+                <th>Typ</th>
+                <th>Ilość</th>
+                <th width="120px">Akcja</th>
+            </tr>
 
-                    for(var i = 0;i < data.length;i++) { %>
+            <% if(data.length){
 
-                    <tr>
-                        <td><%= (i + 1) %></td>
-                        <td><%= data[i].ID_Produkt %></td>
-                        <td><%= data[i].ID_Producent %></td>
-                        <td><%= data[i].nazwa %></td>
-                        <td><%= data[i].cena %></td>
-                        <td><%= data[i].opis %></td>
-                        <td><%= data[i].typ %></td>
-                        <td><%= data[i].ilosc %></td>
-                        <td align="center">
-                            <a class="a-inside buy" href="../index/buy/<%= data[i].ID_Produkt %>">Kup</a>
-                        </td>
-                    </tr>
-                    <% }
+            for(var i = 0;i < data.length;i++) { %>
 
-                    }else{ %>
-                    <tr>
-                        <td colspan="3">Brak Produktów</td>
-                    </tr>
-                    <% } %>
+            <tr>
+                <td><%= (i + 1) %></td>
+                <td><%= data[i].nazwa %></td>
+                <td><%= data[i].cena %></td>
+                <td><%= data[i].opis %></td>
+                <td><%= data[i].typ %></td>
+                <td><%= data[i].ilosc %></td>
+                <td align="center">
+                    <a class="a-inside buy" href="../index/buy/<%= data[i].ID_Produkt %>">Kup</a>
+                </td>
+            </tr>
+            <% }
 
-                </table>
-            </div>
-        </div>
+            }else{ %>
+            <tr>
+                <td colspan="3">Brak Produktów</td>
+            </tr>
+            <% } %>
 
-    </body>
+        </table>
+    </div>
+</div>
+
+</body>
 
 </html>

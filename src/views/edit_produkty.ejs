@@ -1,62 +1,62 @@
 <%- include layouts/header.ejs %>
+<title>AlkoSzop - Panel Administracyjny</title>
+<div class="page-data">
 
-    <div class="page-data">
+    <form method="post" action="/produkty/edit/<%= data[0].ID_Produkt %>">
+        <table cellpadding="11">
+            <tr>
+                <td class="label">ID_Produkt</td>
+                <td>:
+                    <input type="text" name="ID_Produkt" value="<%= data[0].ID_Produkt %>" required>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">ID_Producent</td>
+                <td>:
+                    <input type="text" name="ID_Producent" value="<%= data[0].ID_Producent %>" required>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Nazwa</td>
+                <td>:
+                    <input type="text" name="nazwa" value="<%= data[0].nazwa %>" required>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Cena</td>
+                <td>:
+                    <input type="text" name="cena" value="<%= data[0].cena %>" required>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Opis</td>
+                <td>:
+                    <input type="text" name="opis" value="<%= data[0].opis %>" required>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Typ</td>
+                <td>:
+                    <input type="text" name="typ" value="<%= data[0].typ %>" required>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Ilość</td>
+                <td>:
+                    <input type="text" name="ilosc" value="<%= data[0].ilosc %>" required>
+                </td>
+            </tr>
+            <tr>
+                <td class="label"></td>
+                <td>
+                    &nbsp;
+                    <input type="submit" name="submit" value="Save">
+                    <input type="button" name="cancel" value="Cancel" class="cancel" onClick="cancelAdd()">
+                </td>
+            </tr>
+        </table>
+    </form>
 
-        <form method="post" action="/produkty/edit/<%=data[0].ID_Produkt%>">
-            <table cellpadding="11">
-                <tr>
-                    <td class="label">ID_Produkt</td>
-                    <td>:
-                        <input type="text" name="ID_Produkt" value="<%=data[0].ID_Produkt%>" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="label">ID_Producent</td>
-                    <td>:
-                        <input type="text" name="ID_Producent" value="<%=data[0].ID_Producent%>" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="label">Nazwa</td>
-                    <td>:
-                        <input type="text" name="nazwa" value="<%=data[0].nazwa%>" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="label">Cena</td>
-                    <td>:
-                        <input type="text" name="cena" value="<%=data[0].cena%>" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="label">Opis</td>
-                    <td>:
-                        <input type="text" name="opis" value="<%=data[0].opis%>" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="label">Typ</td>
-                    <td>:
-                        <input type="text" name="typ" value="<%=data[0].typ%>" required>
-                    </td>
-                </tr>
-                <tr>
-                        <td class="label">Ilość</td>
-                        <td>:
-                            <input type="text" name="ilosc" value="<%=data[0].ilosc%>" required>
-                        </td>
-                    </tr>
-                <tr>
-                    <td class="label"></td>
-                    <td>
-                        &nbsp;
-                        <input type="submit" name="submit" value="Save">
-                        <input type="button" name="cancel" value="Cancel" class="cancel" onClick="cancelAdd()">
-                    </td>
-                </tr>
-            </table>
-        </form>
+</div>
 
-    </div>
-
-    <%- include layouts/footer.ejs %>
+<%- include layouts/footer.ejs %>

@@ -24,6 +24,11 @@ a {
    
 }
 
+.search input[type='text'] {
+    height: 25px;
+    padding: 0 5px;
+}
+
 .page-container{padding:20px;}
 .page-data{padding:10px;}
 .page-header{
@@ -43,6 +48,7 @@ a {
 .a-inside{padding:4px 10px;border:1px solid #fff;text-decoration:none;}
 .a-inside.edit{background-color:#005000;color:#fff;}
 .a-inside.buy{background-color:#123;color:#fff;}
+.a-inside.search{background-color:#123;color:#fff;height: 31px;}
 .a-inside.delete{background-color:#500000;color:#fff;}
 
 input[type="text"]{

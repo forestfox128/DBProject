@@ -1,62 +1,62 @@
 <%- include layouts/header.ejs %>
+<title>AlkoSzop - Panel Administracyjny</title>
+<div class="page-data">
 
-    <div class="page-data">
+    <form method="post" action="/produkty/add">
+        <table cellpadding="11">
+            <tr>
+                <td class="label">ID Produktu</td>
+                <td>:
+                    <input type="text" name="ID_Produkt" required>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">ID Producenta</td>
+                <td>:
+                    <input type="text" name="ID_Producent" required>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Nazwa</td>
+                <td>:
+                    <input type="text" name="nazwa" required>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Cena</td>
+                <td>:
+                    <input type="text" name="cena" required>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Opis</td>
+                <td>:
+                    <input type="text" name="opis" required>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Typ</td>
+                <td>:
+                    <input type="text" name="typ" required>
+                </td>
+            </tr>
+            <tr>
+                <td class="ilosc">Ilość</td>
+                <td>:
+                    <input type="text" name="ilosc" required>
+                </td>
+            </tr>
+            <tr>
+                <td class="label"></td>
+                <td>
+                    &nbsp;
+                    <input type="submit" name="submit" value="Zapisz">
+                    <input type="button" name="cancel" value="Anuluj" class="cancel" onClick="cancelAdd()">
+                </td>
+            </tr>
+        </table>
+    </form>
 
-        <form method="post" action="/produkty/add">
-            <table cellpadding="11">
-                <tr>
-                    <td class="label">ID Produktu</td>
-                    <td>:
-                        <input type="text" name="ID_Produkt" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="label">ID Producenta</td>
-                    <td>:
-                        <input type="text" name="ID_Producent" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="label">Nazwa</td>
-                    <td>:
-                        <input type="text" name="nazwa" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="label">Cena</td>
-                    <td>:
-                        <input type="text" name="cena" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="label">Opis</td>
-                    <td>:
-                        <input type="text" name="opis" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="label">Typ</td>
-                    <td>:
-                        <input type="text" name="typ" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="ilosc">Ilość</td>
-                    <td>:
-                        <input type="text" name="ilosc" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="label"></td>
-                    <td>
-                        &nbsp;
-                        <input type="submit" name="submit" value="Zapisz">
-                        <input type="button" name="cancel" value="Anuluj" class="cancel" onClick="cancelAdd()">
-                    </td>
-                </tr>
-            </table>
-        </form>
+</div>
 
-    </div>
-
-    <%- include layouts/footer.ejs %>
+<%- include layouts/footer.ejs %>
