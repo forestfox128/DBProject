@@ -6,6 +6,7 @@ var routes = require('./routes');
 var http = require('http');
 var path = require('path');
 //load produkty route
+var index = require('./routes/index');
 var produkty = require('./routes/produkty_adm');
 var app = express();
 var connection  = require('express-myconnection'); 

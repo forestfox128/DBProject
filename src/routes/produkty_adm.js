@@ -1,8 +1,3 @@
-
-/*
- * GET users listing.
- */
-
 exports.list = function (req, res) {
 
     req.getConnection(function (err, connection) {

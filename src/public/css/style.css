@@ -42,6 +42,7 @@ a {
 .data-table table{border-collapse:collapse;border:1px solid #ddd;width:100%}
 .a-inside{padding:4px 10px;border:1px solid #fff;text-decoration:none;}
 .a-inside.edit{background-color:#005000;color:#fff;}
+.a-inside.buy{background-color:#123;color:#fff;}
 .a-inside.delete{background-color:#500000;color:#fff;}
 
 input[type="text"]{
