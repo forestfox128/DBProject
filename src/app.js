@@ -5,13 +5,13 @@ var express = require('express');
 var routes = require('./routes');
 var http = require('http');
 var path = require('path');
-//load customers route
-var customers = require('./routes/customers'); 
+//load produkty route
+var produkty = require('./routes/produkty_adm');
 var app = express();
 var connection  = require('express-myconnection'); 
 var mysql = require('mysql');
 // all environments
-app.set('port', process.env.PORT || 4300);
+app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 //app.use(express.favicon());
@@ -21,7 +21,7 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(express.static(path.join(__dirname, 'public')));
 // development only
-if ('development' == app.get('env')) {
+if ('development' === app.get('env')) {
   app.use(express.errorHandler());
 }
 /*------------------------------------------
@@ -33,18 +33,18 @@ app.use(
     connection(mysql,{
         
         host: 'localhost',
-        user: '',
-        password : '',
-        database:'sample'
+        user: 'root',
+        password : 'Varden97',
+        database:'DBProject'
     },'request')
 );//route index, hello world
-app.get('/', routes.index);//route customer list
-app.get('/customers', customers.list);//route add customer, get n post
-app.get('/customers/add', customers.add);
-app.post('/customers/add', customers.save);//route delete customer
-app.get('/customers/delete/:id', customers.delete_customer);//edit customer route , get n post
-app.get('/customers/edit/:id', customers.edit); 
-app.post('/customers/edit/:id',customers.save_edit);
+app.get('/', routes.index);
+app.get('/produkty', produkty.list);
+app.get('/produkty/add', produkty.add);
+app.post('/produkty/add', produkty.save);
+app.get('/produkty/delete/:id', produkty.delete_produkt);
+app.get('/produkty/edit/:id', produkty.edit);
+app.post('/produkty/edit/:id',produkty.save_produkt);
 app.use(app.router);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

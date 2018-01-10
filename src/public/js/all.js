@@ -1,8 +1,8 @@
-function addUser(){
+function addProdukt(){
             
-    window.location.href = '/customers/add';
+    window.location.href = '/produkty/add';
 }
 function cancelAdd(){
     
-    window.location.href = '/customers';
+    window.location.href = '/produkty';
 }
