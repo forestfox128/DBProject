@@ -145,13 +145,9 @@ exports.buy_produkt = function (req, res) {
 
     req.getConnection(function (err, connection) {
 
-        var data = {
-
-            ilosc: input.ilosc
-
-        };
-
-        connection.query("UPDATE Produkty set ? WHERE ID_Produkt = ? ", [data, id], function (err, rows) {
+        var data = input.ilosc;
+        
+        connection.query("UPDATE Produkty set ilosc = ilosc - ? WHERE ID_Produkt = ? ", [data, id], function (err, rows) {
 
             if (err)
                 console.log("Error Updating : %s ", err);
