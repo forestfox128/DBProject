@@ -69,7 +69,7 @@ exports.save_producent = function (req, res) {
         var data = {
             nazwa: input.nazwa
         };
-        
+
         connection.query("UPDATE Producent set ? WHERE ID_Producent = ?", [data, id], function (err, rows) {
 
             if (err)
