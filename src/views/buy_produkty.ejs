@@ -1,0 +1,48 @@
+<%- include layouts/header.ejs %>
+<title>AlkoSzop - Kup Produkt</title>
+<div class="page-data" align="center">
+
+    <form method="post" action="/produkty/edit/<%= data[0].ID_Produkt %>">
+        <table cellpadding="11">
+            <tr>
+                <td class="label">ID_Produkt:</td>
+                <td class="label" align="right"><%= data[0].ID_Produkt %></td>
+            </tr>
+            <tr>
+                <td class="label">ID_Producent</td>
+                <td class="label" align="right"><%= data[0].ID_Producent %></td>
+            </tr>
+            <tr>
+                <td class="label">Nazwa</td>
+                <td class="label" align="right"><%= data[0].nazwa %></td>
+            </tr>
+            <tr>
+                <td class="label">Cena</td>
+                <td class="label" align="right"><%= data[0].cena %></td>
+            </tr>
+            <tr>
+                <td class="label">Opis</td>
+                <td class="label" align="right"><%= data[0].opis %></td>
+            </tr>
+            <tr>
+                <td class="label">Typ</td>
+                <td class="label" align="right"><%= data[0].typ %></td>
+            </tr>
+            <tr>
+                <td class="label">Ilość:</td>
+                <td>
+                    <input type="text" name="ilosc" align="right" width="50px" value="<%= data[0].ilosc %>" required>
+                </td>
+            </tr>
+            <tr>
+                <td class="label"></td>
+                <td>
+                    <input type="submit" name="submit" value="Kup">
+                    &nbsp;
+                    <input type="button" name="cancel" value="Anuluj" class="cancel" onClick="cancelBuy()">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</div>

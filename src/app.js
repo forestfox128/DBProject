@@ -6,10 +6,9 @@ var routes = require('./routes');
 var http = require('http');
 var path = require('path');
 //load produkty route
-var index = require('./routes/index');
 var produkty = require('./routes/produkty_adm');
 var app = express();
-var connection  = require('express-myconnection'); 
+var connection  = require('express-myconnection');
 var mysql = require('mysql');
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -30,9 +29,9 @@ if ('development' === app.get('env')) {
     type koneksi : single,pool and request 
 -------------------------------------------*/
 app.use(
-    
+
     connection(mysql,{
-        
+
         host: 'localhost',
         user: 'root',
         password : 'Varden97',
@@ -46,6 +45,7 @@ app.post('/produkty/add', produkty.save);
 app.get('/produkty/delete/:id', produkty.delete_produkt);
 app.get('/produkty/edit/:id', produkty.edit);
 app.post('/produkty/edit/:id',produkty.save_produkt);
+app.get('/produkty/buy/:id', produkty.buy);
 app.use(app.router);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

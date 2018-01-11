@@ -63,12 +63,11 @@ exports.save = function (req, res) {
 
             if (err)
                 console.log("Error inserting : %s ", err);
-
+            else
             res.redirect('/produkty');
 
         });
 
-        // console.log(query.sql); get raw query
 
     });
 };
@@ -96,7 +95,7 @@ exports.save_produkt = function (req, res) {
 
             if (err)
                 console.log("Error Updating : %s ", err);
-
+            else
             res.redirect('/produkty');
 
         });
@@ -124,3 +123,41 @@ exports.delete_produkt = function(req, res){
     });
 };
 
+exports.buy = function (req, res) {
+    var id = req.params.id;
+
+    req.getConnection(function (err, connection) {
+
+        var query = connection.query('SELECT * FROM Produkty WHERE ID_Produkt = ?', [id], function (err, rows) {
+
+            if (err)
+                console.log("Error Selecting : %s ", err);
+
+            res.render('buy_produkty', { page_title: "Kup Produkt", data: rows });
+        });
+    });
+};
+
+exports.buy_produkt = function (req, res) {
+
+    var input = JSON.parse(JSON.stringify(req.body));
+    var id = req.params.id;
+
+    req.getConnection(function (err, connection) {
+
+        var data = {
+
+            ilosc: input.ilosc
+
+        };
+
+        connection.query("UPDATE Produkty set ? WHERE ID_Produkt = ? ", [data, id], function (err, rows) {
+
+            if (err)
+                console.log("Error Updating : %s ", err);
+            else
+                res.redirect('/');
+        });
+
+    });
+};

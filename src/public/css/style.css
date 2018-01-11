@@ -14,14 +14,14 @@ a {
 }
 
 #wrapper{
-    
+
     margin-top:30px;
     width:90%;
     min-height:600px;
     margin-left:5%;
     border:1px solid #ddd;
     background:#fff;
-   
+
 }
 
 .search input[type='text'] {
@@ -32,7 +32,7 @@ a {
 .page-container{padding:20px;}
 .page-data{padding:10px;}
 .page-header{
-    
+
     padding:2px;
     padding-left:40px;
     background:#123;color:#FEFFFD;
@@ -52,7 +52,7 @@ a {
 .a-inside.delete{background-color:#500000;color:#fff;}
 
 input[type="text"]{
-    
+
     border:1px solid #ddd;
     height:26px;
     width:300px;

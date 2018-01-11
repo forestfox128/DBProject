@@ -6,3 +6,7 @@ function cancelAdd(){
     
     window.location.href = '/produkty';
 }
+function cancelBuy(){
+
+    window.location.href = '/';
+}
