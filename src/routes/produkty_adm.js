@@ -11,8 +11,6 @@ exports.list = function (req, res) {
 
 
         });
-
-        //console.log(query.sql);
     });
 
 };
@@ -146,7 +144,7 @@ exports.buy_produkt = function (req, res) {
     req.getConnection(function (err, connection) {
 
         var data = input.ilosc;
-        
+
         connection.query("UPDATE Produkty set ilosc = ilosc - ? WHERE ID_Produkt = ? ", [data, id], function (err, rows) {
 
             if (err)

@@ -5,7 +5,6 @@
 exports.index = function (req, res) {
 
     req.getConnection(function (err, connection) {
-
         var nazwa = req.query.user;
 
         var filter = "";
