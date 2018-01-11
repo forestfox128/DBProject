@@ -7,6 +7,7 @@ var http = require('http');
 var path = require('path');
 //load produkty route
 var produkty = require('./routes/produkty');
+var producenci = require('./routes/producenci');
 var app = express();
 var connection  = require('express-myconnection');
 var mysql = require('mysql');
@@ -47,6 +48,12 @@ app.get('/produkty/edit/:id', produkty.edit);
 app.post('/produkty/edit/:id',produkty.save_produkt);
 app.get('/buy/:id', routes.buy);
 app.post('/buy/:id',routes.buy_produkt);
+app.get('/producenci', producenci.list);
+app.get('/producenci/add', producenci.add);
+app.post('/producenci/add', producenci.save);
+app.get('/producenci/delete/:id', producenci.delete_producent);
+app.get('/producenci/edit/:id', producenci.edit);
+app.post('/producenci/edit/:id',producenci.save_producent);
 app.use(app.router);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

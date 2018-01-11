@@ -1,12 +1,15 @@
 function addProdukt(){
-            
     window.location.href = '/produkty/add';
 }
-function cancelAdd(){
-    
+function cancelAddProdukt(){
     window.location.href = '/produkty';
 }
 function cancelBuy(){
-
     window.location.href = '/';
+}
+function addProducent(){
+    window.location.href = '/producenci/add';
+}
+function cancelAddProducent(){
+    window.location.href = '/producenci';
 }
