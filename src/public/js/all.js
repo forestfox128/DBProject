@@ -13,3 +13,9 @@ function addProducent(){
 function cancelAddProducent(){
     window.location.href = '/producenci';
 }
+function addTyp(){
+    window.location.href = '/typy/add';
+}
+function cancelAddTyp(){
+    window.location.href = '/typy';
+}

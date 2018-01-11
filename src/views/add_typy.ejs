@@ -2,18 +2,18 @@
 <title>AlkoSzop - Panel Administracyjny</title>
 <div class="page-data">
 
-    <form method="post" action="/producenci/edit/<%= data[0].ID_Produkt %>">
+    <form method="post" action="/typy/add">
         <table cellpadding="11">
             <tr>
-                <td class="label">ID Producenta</td>
+                <td class="label">ID Typu</td>
                 <td>:
-                    <input type="text" name="ID_Producent" value="<%= data[0].ID_Producent %>" required>
+                    <input type="text" name="ID_Typ" required>
                 </td>
             </tr>
             <tr>
                 <td class="label">Nazwa</td>
                 <td>:
-                    <input type="text" name="nazwa" value="<%= data[0].nazwa %>" required>
+                    <input type="text" name="nazwa" required>
                 </td>
             </tr>
             <tr>
@@ -21,7 +21,7 @@
                 <td>
                     &nbsp;
                     <input type="submit" name="submit" value="Zapisz">
-                    <input type="button" name="cancel" value="Anuluj" class="cancel" onClick="cancelAddProducent()">
+                    <input type="button" name="cancel" value="Anuluj" class="cancel" onClick="cancelAddTyp()">
                 </td>
             </tr>
         </table>
