@@ -13,7 +13,7 @@ exports.list = function (req, res) {
                 console.log("Error Selecting : %s ", err);
             }
 
-            res.render('klienci', {page_title: 'AlkoSZOP - Klienci', data: rows, user: surname});
+            res.render('klienci', {page_title: 'Klienci - Przegląd', data: rows, user: surname});
         });
     });
 };
