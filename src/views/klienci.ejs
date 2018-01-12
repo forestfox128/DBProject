@@ -3,8 +3,8 @@
 <title>AlkoSZOP - Klienci</title>
 <script>
     function Search() {
-        var search = document.getElementsByName('name')[0].value;
-        window.location.href = "/?user=" + search;
+        var search = document.getElementsByName('surname')[0].value;
+        window.location.href = "/klienci/?user=" + search;
     }
 </script>
 
@@ -12,7 +12,7 @@
 <div class="page-data">
     <div class="search" align="center">
         <label class="a-inside search">Wyszukiwarka：</label>
-        <input type="text" name="name" class="a-inside search" value=""
+        <input type="text" name="surname" class="a-inside search" value=""
                placeholder="Powiedz, kogo szukasz...">
         <input type="button" name="search" value="Szukaj" class="a-inside search" onclick="Search();">
     </div>
