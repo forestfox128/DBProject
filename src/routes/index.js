@@ -51,8 +51,42 @@ exports.buy_produkt = function (req, res) {
             if (err)
                 console.log("Error Updating : %s ", err);
             else
-                res.redirect('/');
+                res.redirect('/buy_klienci');
         });
 
     });
+};
+
+
+exports.buy_klienci = function (req, res) {
+    res.render('buy_klienci', { page_title: "Wypełnij Dane" });
+};
+
+exports.save_klienci = function (req, res) {
+
+    var input = JSON.parse(JSON.stringify(req.body));
+
+    req.getConnection(function (err, connection) {
+
+        var data = {
+            ID_Klient: input.ID_Klient,
+            imie: input.imie,
+            nazwisko: input.nazwisko,
+            nazwa_firmy: input.nazwa_firmy,
+            numer_telefonu: input.numer_telefonu,
+            NIP: input.NIP
+        };
+
+        var query = connection.query("INSERT INTO Klient set ? ", data, function (err, rows) {
+
+            if (err)
+                console.log("Error inserting : %s ", err);
+            else
+                res.redirect('/buy_adresy');
+        });
+    });
+};
+
+exports.buy_adresy = function (req, res) {
+    res.render('buy_adresy', { page_title: "Wypełnij Dane" });
 };

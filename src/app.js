@@ -26,10 +26,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 if ('development' === app.get('env')) {
   app.use(express.errorHandler());
 }
-/*------------------------------------------
-    connection peer, register as middleware
-    type koneksi : single,pool and request 
--------------------------------------------*/
 app.use(
 
     connection(mysql,{
@@ -49,6 +45,9 @@ app.get('/produkty/edit/:id', produkty.edit);
 app.post('/produkty/edit/:id',produkty.save_produkt);
 app.get('/buy/:id', routes.buy);
 app.post('/buy/:id',routes.buy_produkt);
+app.get('/buy_klienci',routes.buy_klienci);
+app.post('/buy_klienci',routes.save_klienci);
+app.get('/buy_adresy',routes.buy_adresy);
 app.get('/producenci', producenci.list);
 app.get('/producenci/add', producenci.add);
 app.post('/producenci/add', producenci.save);

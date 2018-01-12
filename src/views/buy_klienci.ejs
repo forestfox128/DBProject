@@ -1,0 +1,56 @@
+<%- include layouts/header.ejs %>
+<title>AlkoSzop - Wypełnij Dane</title>
+<div class="page-data">
+
+    <form method="post" action="/buy_klienci">
+        <table cellpadding="11" align="center">
+            <tr>
+                <td class="label">ID Klienta</td>
+                <td>:
+                    <input type="text" name="ID_Klient" required>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Imię</td>
+                <td>:
+                    <input type="text" name="imie" required>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Nazwisko</td>
+                <td>:
+                    <input type="text" name="nazwisko" required>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Nazwa Firmy</td>
+                <td>:
+                    <input type="text" name="nazwa_firmy" required>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Numer Telefonu</td>
+                <td>:
+                    <input type="text" name="numer_telefonu" required>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">NIP</td>
+                <td>:
+                    <input type="text" name="NIP" required>
+                </td>
+            </tr>
+            <tr>
+                <td class="label"></td>
+                <td>
+                    &nbsp;
+                    <input type="submit" name="submit" value="Dalej">
+                    <input type="button" name="cancel" value="Anuluj" class="cancel" onClick="cancelBuy()">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</div>
+
+<%- include layouts/footer.ejs %>
