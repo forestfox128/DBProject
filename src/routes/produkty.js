@@ -89,7 +89,8 @@ exports.save_produkt = function (req, res) {
 
         };
 
-        connection.query("UPDATE Produkty set ? WHERE ID_Produkt = ? ", [data, id], function (err, rows) {
+        //connection.query("UPDATE Produkty set ? WHERE ID_Produkt = ? ", [data, id], function (err, rows) {
+        connection.query("CALL insertZamowienia(?,?,?,?,?,?,2,false,9.5,'kurier','platnosc') ", [10,10,10,ilosc,ilosc,cena*ilosc,cena], function (err, rows) {
 
             if (err)
                 console.log("Error Updating : %s ", err);

@@ -41,8 +41,11 @@ exports.buy_produkt = function (req, res) {
     req.getConnection(function (err, connection) {
 
         var data = input.ilosc;
-
-        connection.query("UPDATE Produkty set ilosc = ilosc - ? WHERE ID_Produkt = ? ", [data, id], function (err, rows) {
+        var ID_Klient = 1;
+        var cena = 3;
+        
+        //connection.query("UPDATE Produkty set ilosc = ilosc - ? WHERE ID_Produkt = ? ", [data, id], function (err, rows) {
+        connection.query("CALL insertZamowienia(?,?,?,?,?,false,9.5,'kurier','platnosc') ", [ID_Klient, id, data, cena*data, cena], function (err, rows) {
 
             if (err)
                 console.log("Error Updating : %s ", err);
