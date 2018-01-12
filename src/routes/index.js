@@ -59,7 +59,15 @@ exports.buy_produkt = function (req, res) {
 
 
 exports.buy_klienci = function (req, res) {
-    res.render('buy_klienci', { page_title: "Wypełnij Dane" });
+
+    req.getConnection(function (err, connection) {
+
+        var query = connection.query('SELECT MAX (ID_Klient) AS "ID" FROM Klient', function (err, rows) {
+            if (err)
+                console.log("Error Selecting : %s ", err);
+            res.render('buy_klienci', { page_title: "Wypełnij Dane", data: rows });
+        });
+    });
 };
 
 exports.save_klienci = function (req, res) {
@@ -88,5 +96,36 @@ exports.save_klienci = function (req, res) {
 };
 
 exports.buy_adresy = function (req, res) {
-    res.render('buy_adresy', { page_title: "Wypełnij Dane" });
+    req.getConnection(function (err, connection) {
+
+        var query = connection.query('SELECT MAX (ID_Klient) AS "ID" FROM Klient', function (err, rows) {
+            if (err)
+                console.log("Error Selecting : %s ", err);
+            res.render('buy_adresy', { page_title: "Wypełnij Dane", data: rows });
+        });
+    });
+};
+
+exports.save_adresy = function (req, res) {
+
+    var input = JSON.parse(JSON.stringify(req.body));
+
+    req.getConnection(function (err, connection) {
+
+        var data = {
+            ID_Klient: input.ID_Klient,
+            ulica: input.ulica,
+            nr_domu: input.nr_domu,
+            miejscowosc: input.miejscowosc,
+            kod_pocztowy: input.kod_pocztowy
+        };
+
+        var query = connection.query("INSERT INTO Adresy set ? ", data, function (err, rows) {
+
+            if (err)
+                console.log("Error inserting : %s ", err);
+            else
+                res.redirect('/');
+        });
+    });
 };
