@@ -1,0 +1,45 @@
+<%- include layouts/header.ejs %>
+
+<title>AlkoSZOP</title>
+<body>
+<div class="page-data">
+    <br>
+    <div class="data-table">
+        <table border="1" cellpadding="7" cellspacing="7">
+            <tr>
+                <th width="50px">No</th>
+                <th>Nazwa</th>
+                <th>Cena</th>
+                <th>Opis</th>
+                <th>Typ</th>
+                <th>Ilość</th>
+                <th width="120px">Akcja</th>
+            </tr>
+
+            <% if(data.length){
+
+            for(var i = 0;i < data.length;i++) { %>
+
+            <tr>
+                <td><%= (i + 1) %></td>
+                <td><%= data[i].nazwa %></td>
+                <td><%= data[i].cena %></td>
+                <td><%= data[i].opis %></td>
+                <td><%= data[i].typ %></td>
+                <td><%= data[i].ilosc %></td>
+                <td align="center">
+                    <a class="a-inside buy" href="../buy/<%= data[i].ID_Produkt %>">Kup</a>
+                </td>
+            </tr>
+            <% }
+
+            }else{ %>
+            <tr>
+                <td colspan="3">Brak Produktów</td>
+            </tr>
+            <% } %>
+
+        </table>
+    </div>
+</div>
+<%- include layouts/footer.ejs %>

@@ -1,0 +1,54 @@
+<%- include layouts/header.ejs %>
+
+<title>AlkoSZOP - Klienci</title>
+<script>
+    function Search() {
+        var search = document.getElementsByName('name')[0].value;
+        window.location.href = "/?user=" + search;
+    }
+</script>
+
+<body>
+<div class="page-data">
+    <div class="search" align="center">
+        <label class="a-inside search">Wyszukiwarka：</label>
+        <input type="text" name="name" class="a-inside search" value=""
+               placeholder="Powiedz, kogo szukasz...">
+        <input type="button" name="search" value="Szukaj" class="a-inside search" onclick="Search();">
+    </div>
+    <br>
+    <div class="data-table">
+        <table border="1" cellpadding="7" cellspacing="7">
+            <tr>
+                <th>ID Klienta</th>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Nazwa firmy</th>
+                <th>Numer Telefonu</th>
+                <th>NIP</th>
+            </tr>
+
+            <% if(data.length){
+
+            for(var i = 0;i < data.length;i++) { %>
+
+            <tr>
+                <td><%= data[i].ID_Klient %></td>
+                <td><%= data[i].imie %></td>
+                <td><%= data[i].nazwisko %></td>
+                <td><%= data[i].nazwa_firmy %></td>
+                <td><%= data[i].numer_telefonu %></td>
+                <td><%= data[i].NIP %></td>
+            </tr>
+            <% }
+
+            }else{ %>
+            <tr>
+                <td colspan="3">Brak Klientów</td>
+            </tr>
+            <% } %>
+
+        </table>
+    </div>
+</div>
+<%- include layouts/footer.ejs %>

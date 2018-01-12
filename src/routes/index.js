@@ -1,7 +1,3 @@
-/*
- * GET home page.
- */
-
 exports.index = function (req, res) {
 
     req.getConnection(function (err, connection) {
