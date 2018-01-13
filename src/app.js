@@ -33,7 +33,7 @@ app.use(
     connection(mysql,{
         host: 'localhost',
         user: 'root',
-        password : 'basia123',
+        password : 'Varden97',
         database:'DBProject'
     },'request')
 );//route index, hello world
@@ -66,5 +66,6 @@ app.get('/klienci', klienci.list);
 app.get('/adresy', adresy.list);
 app.use(app.router);
 http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+  console.log('Szop is listening on port ' + app.get('port'));
+  console.log('http://localost:' + app.get('port'));
 });
