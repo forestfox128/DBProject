@@ -42,10 +42,21 @@ exports.buy_produkt = function (req, res) {
 
         var data = input.ilosc;
         var ID_Klient = 1;
-        var cena = 3;
+        var price = 3;
+        //var price;
+
+        // connection.query("SELECT Produkty.cena FROM Produkty WHERE ID_Produkt = ?", [id], function(err, rows, fields){
+        //     if (err) 
+        //         console.log("Error Checking Price: %s", err);
+
+        //     res.json(rows);
+
+        //     price = rows[0].cena;
+        //     console.log(price);
+        // });
         
         //connection.query("UPDATE Produkty set ilosc = ilosc - ? WHERE ID_Produkt = ? ", [data, id], function (err, rows) {
-        connection.query("CALL insertZamowienia(?,?,?,?,?,false,9.5,'kurier','platnosc') ", [ID_Klient, id, data, cena*data, cena], function (err, rows) {
+        connection.query("CALL insertZamowienia(?,?,?,?,?,false,9.5,'kurier','platnosc') ", [ID_Klient, id, data, price*data, price], function (err, rows) {
 
             if (err)
                 console.log("Error Updating : %s ", err);
