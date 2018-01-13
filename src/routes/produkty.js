@@ -100,7 +100,6 @@ exports.save_produkt = function (req, res) {
     });
 };
 
-
 exports.delete_produkt = function(req, res){
 
     var id = req.params.id;

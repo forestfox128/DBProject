@@ -19,3 +19,6 @@ function addTyp(){
 function cancelAddTyp(){
     window.location.href = '/typy';
 }
+function cancelEditAdress(){
+    window.location.href = '/adresy';
+}

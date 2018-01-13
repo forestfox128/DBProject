@@ -63,7 +63,10 @@ app.get('/typy/delete/:id', typy.delete_typy);
 app.get('/typy/edit/:id', typy.edit);
 app.post('/typy/edit/:id',typy.save_typy);
 app.get('/klienci', klienci.list);
+app.get('/klienci/delete/:id', klienci.delete);
 app.get('/adresy', adresy.list);
+app.get('/adresy/edit/:id', adresy.edit);
+app.post('/adresy/edit/:id', adresy.save);
 app.use(app.router);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Szop is listening on port ' + app.get('port'));

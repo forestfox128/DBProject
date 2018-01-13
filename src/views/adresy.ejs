@@ -12,6 +12,7 @@
                 <th width="100px">Numer Domu</th>
                 <th>Miejscowość</th>
                 <th>Kod Pocztowy</th>
+                <th width="120px">Akcja</th>
             </tr>
 
             <% if(data.length){
@@ -24,6 +25,9 @@
                 <td><%= data[i].nr_domu %></td>
                 <td><%= data[i].miejscowosc %></td>
                 <td><%= data[i].kod_pocztowy %></td>
+                <td align="center">
+                    <a class="a-inside edit" href="../adresy/edit/<%= data[i].ID_Klient %>">Edytuj</a>
+                </td>
             </tr>
             <% }
 

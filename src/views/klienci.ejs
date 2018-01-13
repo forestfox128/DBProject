@@ -26,6 +26,7 @@
                 <th>Nazwa firmy</th>
                 <th>Numer Telefonu</th>
                 <th>NIP</th>
+                <th width="120px">Akcja</th>
             </tr>
 
             <% if(data.length){
@@ -39,6 +40,9 @@
                 <td><%= data[i].nazwa_firmy %></td>
                 <td><%= data[i].numer_telefonu %></td>
                 <td><%= data[i].NIP %></td>
+                <td align="center">
+                    <a class="a-inside delete" href="../klienci/delete/<%= data[i].ID_Klient %>">Usuń</a>
+                </td>
             </tr>
             <% }
 
