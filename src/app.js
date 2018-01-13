@@ -67,5 +67,5 @@ app.get('/adresy', adresy.list);
 app.use(app.router);
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Szop is listening on port ' + app.get('port'));
-  console.log('http://localost:' + app.get('port'));
+  console.log('-> http://www.localost:' + app.get('port'));
 });

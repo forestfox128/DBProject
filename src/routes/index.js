@@ -28,7 +28,7 @@ exports.buy = function (req, res) {
             if (err)
                 console.log("Error Selecting : %s ", err);
 
-            res.render('buy_produkty', { page_title: "Kup Produkt", data: rows });
+            res.render('buy_produkty', {page_title: "Kup Produkt", data: rows});
         });
     });
 };
@@ -40,28 +40,21 @@ exports.buy_produkt = function (req, res) {
 
     req.getConnection(function (err, connection) {
 
-        var data = input.ilosc;
-        var ID_Klient = 1;
-        var price = 3;
-        //var price;
+        var quantity = input.ilosc;
+        var price = input.cena;
 
-        // connection.query("SELECT Produkty.cena FROM Produkty WHERE ID_Produkt = ?", [id], function(err, rows, fields){
-        //     if (err) 
-        //         console.log("Error Checking Price: %s", err);
-
-        //     res.json(rows);
-
-        //     price = rows[0].cena;
-        //     console.log(price);
-        // });
-        
-        //connection.query("UPDATE Produkty set ilosc = ilosc - ? WHERE ID_Produkt = ? ", [data, id], function (err, rows) {
-        connection.query("CALL insertZamowienia(?,?,?,?,?,false,9.5,'kurier','platnosc') ", [ID_Klient, id, data, price*data, price], function (err, rows) {
-
+        connection.query('SELECT MAX (ID_Klient) AS "ID" FROM Klient', function (err, result, fields) {
             if (err)
-                console.log("Error Updating : %s ", err);
-            else
-                res.redirect('/buy_klienci');
+                console.log("Error Selecting : %s ", err);
+            var client = result[0].ID + 1;
+
+            console.log(client);
+            connection.query("CALL insertZamowienia(?,?,?,?,?,false,9.5,'kurier','platnosc') ", [client, id, quantity, price * quantity, price], function (err, rows) {
+                if (err)
+                    console.log("Error Updating : %s ", err);
+                else
+                    res.redirect('/buy_klienci');
+            });
         });
 
     });
@@ -75,7 +68,7 @@ exports.buy_klienci = function (req, res) {
         var query = connection.query('SELECT MAX (ID_Klient) AS "ID" FROM Klient', function (err, rows) {
             if (err)
                 console.log("Error Selecting : %s ", err);
-            res.render('buy_klienci', { page_title: "Wypełnij Dane", data: rows });
+            res.render('buy_klienci', {page_title: "Wypełnij Dane", data: rows});
         });
     });
 };
@@ -111,7 +104,7 @@ exports.buy_adresy = function (req, res) {
         var query = connection.query('SELECT MAX (ID_Klient) AS "ID" FROM Klient', function (err, rows) {
             if (err)
                 console.log("Error Selecting : %s ", err);
-            res.render('buy_adresy', { page_title: "Wypełnij Dane", data: rows });
+            res.render('buy_adresy', {page_title: "Wypełnij Dane", data: rows});
         });
     });
 };
