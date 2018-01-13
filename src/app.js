@@ -34,7 +34,7 @@ app.use(
     connection(mysql,{
         host: 'localhost',
         user: 'root',
-        password : 'Varden97',
+        password : 'basia123',
         database:'DBProject'
     },'request')
 );//route index, hello world

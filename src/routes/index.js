@@ -49,7 +49,7 @@ exports.buy_produkt = function (req, res) {
             var client = result[0].ID + 1;
 
             console.log(client);
-            connection.query("CALL insertZamowienia(?,?,?,?,?,false,9.5,'kurier','platnosc') ", [client, id, quantity, price * quantity, price], function (err, rows) {
+            connection.query("CALL insertZamowienia(?,?,?,?) ", [client, id, quantity, price * quantity], function (err, rows) {
                 if (err)
                     console.log("Error Updating : %s ", err);
                 else
