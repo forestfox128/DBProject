@@ -1,0 +1,47 @@
+<%- include layouts/header.ejs %>
+
+<title>AlkoSZOP - Zamowienia</title>
+
+<body>
+<div class="page-data">
+
+    <br>
+    <div class="data-table">
+        <table border="1" cellpadding="7" cellspacing="7">
+            <tr>
+                <th width="100px">Zamowienie</th>
+                <th width="100px">Klient</th>
+                <th>Data</th>
+                <th>Produkt</th>
+                <th>Ilosc</th>
+                <th>Koszt</th>
+                <th width="120px">Akcja</th>
+            </tr>
+
+            <% if(data.length){
+
+            for(var i = 0;i < data.length;i++) { %>
+
+            <tr>
+                <td><%= data[i].ID_Zamowienia %></td>
+                <td><%= data[i].ID_Klient %></td>
+                <td><%= data[i].data_zamowienia %></td>
+                <td><%= data[i].ID_Produkt %></td>
+                <td><%= data[i].ilosc %></td>
+                <td><%= data[i].koszt %></td>
+                <td align="center">
+                    <a class="a-inside delete" href="../zamowienia/delete/<%= data[i].ID_Klient %>">Usuń</a>
+                </td>
+            </tr>
+            <% }
+
+            }else{ %>
+            <tr>
+                <td colspan="3">Brak Zamowien</td>
+            </tr>
+            <% } %>
+
+        </table>
+    </div>
+</div>
+<%- include layouts/footer.ejs %>
