@@ -39,7 +39,7 @@ CREATE TABLE `Adresy` (
 
 LOCK TABLES `Adresy` WRITE;
 /*!40000 ALTER TABLE `Adresy` DISABLE KEYS */;
-INSERT INTO `Adresy` VALUES (1,'fff','333','ddd','222'),(2,'w','w','w','2'),(3,'a','a','a','2'),(4,'s','s','s','2'),(5,'w','w','w','w'),(6,'f','f','f','5');
+INSERT INTO `Adresy` VALUES (1,'fff','333','ddd','222'),(2,'w','w','w','2'),(3,'a','a','a','2'),(4,'s','s','s','2'),(5,'w','w','w','w'),(6,'f','f','f','5'),(9,'pl grunwaldzki','1','Warszawa','55555'),(11,'Prusa','1','Warszawa','12312');
 /*!40000 ALTER TABLE `Adresy` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,7 +90,7 @@ CREATE TABLE `Klient` (
 
 LOCK TABLES `Klient` WRITE;
 /*!40000 ALTER TABLE `Klient` DISABLE KEYS */;
-INSERT INTO `Klient` VALUES (1,'sss','sss','-',8888,'-'),(2,'s','s','s',4,'3'),(3,'a','a','a',2,'2'),(4,'q','q','q',22,'1'),(5,'s','s','s',3,'3'),(6,'s','s','aaaa',2222,'222222'),(7,'Ala','Kowalska','-',888888888,'-'),(8,'d','dd','d',2222,'-');
+INSERT INTO `Klient` VALUES (1,'sss','sss','-',8888,'-'),(2,'s','s','s',4,'3'),(3,'a','a','a',2,'2'),(4,'q','q','q',22,'1'),(5,'s','s','s',3,'3'),(6,'s','s','aaaa',2222,'222222'),(7,'Ala','Kowalska','-',888888888,'-'),(8,'d','dd','d',2222,'-'),(9,'aNIA','Kowalska','-',1111111111,'-'),(10,'Maciej','Hajduk','-',69696968,'-'),(11,'Adrian','Mucza','-',567567567,'-');
 /*!40000 ALTER TABLE `Klient` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,7 +114,7 @@ CREATE TABLE `Platnosc` (
 
 LOCK TABLES `Platnosc` WRITE;
 /*!40000 ALTER TABLE `Platnosc` DISABLE KEYS */;
-INSERT INTO `Platnosc` VALUES (1,'platnosc'),(3,'platnosc'),(4,'platnosc'),(5,'platnosc'),(6,'platnosc'),(7,'platnosc'),(8,'Poczta Polska');
+INSERT INTO `Platnosc` VALUES (1,'platnosc'),(3,'platnosc'),(4,'platnosc'),(5,'platnosc'),(6,'platnosc'),(7,'platnosc'),(8,'Poczta Polska'),(9,'Poczta Polska'),(11,'Poczta Polska'),(12,'Poczta Polska');
 /*!40000 ALTER TABLE `Platnosc` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -138,7 +138,7 @@ CREATE TABLE `Producent` (
 
 LOCK TABLES `Producent` WRITE;
 /*!40000 ALTER TABLE `Producent` DISABLE KEYS */;
-INSERT INTO `Producent` VALUES (1,NULL);
+INSERT INTO `Producent` VALUES (1,NULL),(9,NULL);
 /*!40000 ALTER TABLE `Producent` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,7 +171,7 @@ CREATE TABLE `Produkty` (
 
 LOCK TABLES `Produkty` WRITE;
 /*!40000 ALTER TABLE `Produkty` DISABLE KEYS */;
-INSERT INTO `Produkty` VALUES (1,1,'Kustosz',1.69,'dobre, tanie, wykwintne piwo',5,1),(2,1,'Amarena',1.69,'dobre, tanie, wykwintne wino',1,2);
+INSERT INTO `Produkty` VALUES (1,1,'Kustosz',1.69,'dobre, tanie, wykwintne piwo',5,5),(2,1,'Amarena',1.69,'dobre, tanie, wykwintne wino',1,1),(3,1,'Chardonnay',25.3,'wino polwytrawne',1,12);
 /*!40000 ALTER TABLE `Produkty` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -184,30 +184,6 @@ UNLOCK TABLES;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 /*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER ProduktyT1
-BEFORE INSERT ON Produkty
-FOR EACH ROW
-  BEGIN
-    DECLARE lookFor BOOLEAN;
-    SET lookFor = (SELECT EXISTS(SELECT 1 FROM Typ WHERE Typ.ID_Typ = new.typ));
-  IF lookFor = 0 THEN
-    INSERT INTO Typ(ID_Typ,nazwa) VALUES (new.typ,NULL);
-  END IF;
-  END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER ProduktyT2
 BEFORE INSERT ON Produkty
 FOR EACH ROW
   BEGIN
@@ -259,16 +235,15 @@ DELIMITER ;;
   BEFORE INSERT ON Produkty
   FOR EACH ROW
 BEGIN
-IF (SELECT COUNT(*) AS total FROM Produkty WHERE nazwa = new.nazwa) > 0
+
+  DECLARE nameP VARCHAR(50);
+  SET nameP = new.nazwa;
+IF (SELECT COUNT(*) AS total FROM Produkty WHERE Produkty.ID_Produkt = nameP) > 0
 THEN
 	SIGNAL SQLSTATE '45000'
       SET MESSAGE_TEXT = 'An duplicaste name error occurred';
 END IF;
-IF (SELECT COUNT(*) AS total FROM Produkty WHERE typ = new.typ) > 0
-THEN
-	SIGNAL SQLSTATE '45000'
-      SET MESSAGE_TEXT = 'An duplicaste type error occurred';
-END IF;
+
   END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -320,7 +295,7 @@ CREATE TABLE `Status_zamowienia` (
 
 LOCK TABLES `Status_zamowienia` WRITE;
 /*!40000 ALTER TABLE `Status_zamowienia` DISABLE KEYS */;
-INSERT INTO `Status_zamowienia` VALUES (1,'2018-01-12 19:54:18','nieprzygotowany'),(3,'2018-01-12 19:54:45','nieprzygotowany'),(4,'2018-01-12 20:17:08','nieprzygotowany'),(5,'2018-01-12 20:40:59','nieprzygotowany'),(6,'2018-01-12 21:44:34','nieprzygotowany'),(7,'2018-01-13 13:54:45','nieprzygotowany'),(8,'2018-01-13 18:01:53','nieprzygotowany');
+INSERT INTO `Status_zamowienia` VALUES (1,'2018-01-12 19:54:18','nieprzygotowany'),(3,'2018-01-12 19:54:45','nieprzygotowany'),(4,'2018-01-12 20:17:08','nieprzygotowany'),(5,'2018-01-12 20:40:59','nieprzygotowany'),(6,'2018-01-12 21:44:34','nieprzygotowany'),(7,'2018-01-13 13:54:45','nieprzygotowany'),(8,'2018-01-13 18:01:53','nieprzygotowany'),(9,'2018-01-13 18:31:07','nieprzygotowany'),(11,'2018-01-14 09:59:09','nieprzygotowany'),(12,'2018-01-14 10:00:59','nieprzygotowany');
 /*!40000 ALTER TABLE `Status_zamowienia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -369,7 +344,7 @@ CREATE TABLE `Wysylka` (
 
 LOCK TABLES `Wysylka` WRITE;
 /*!40000 ALTER TABLE `Wysylka` DISABLE KEYS */;
-INSERT INTO `Wysylka` VALUES (1,9.5,'kurier'),(3,9.5,'kurier'),(4,9.5,'kurier'),(5,9.5,'kurier'),(6,9.5,'kurier'),(7,9.5,'kurier'),(8,9.5,'przelew');
+INSERT INTO `Wysylka` VALUES (1,9.5,'kurier'),(3,9.5,'kurier'),(4,9.5,'kurier'),(5,9.5,'kurier'),(6,9.5,'kurier'),(7,9.5,'kurier'),(8,9.5,'przelew'),(9,9.5,'przelew'),(11,9.5,'przelew'),(12,9.5,'przelew');
 /*!40000 ALTER TABLE `Wysylka` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -392,7 +367,7 @@ CREATE TABLE `Zamowienia` (
   `platnosc` int(11) NOT NULL,
   `faktura` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`ID_Zamowienia`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -401,7 +376,7 @@ CREATE TABLE `Zamowienia` (
 
 LOCK TABLES `Zamowienia` WRITE;
 /*!40000 ALTER TABLE `Zamowienia` DISABLE KEYS */;
-INSERT INTO `Zamowienia` VALUES (2,1,1,1,'2018-01-12 19:54:18',1,1,3,3,0),(3,1,3,3,'2018-01-12 19:54:45',1,1,3,3,0),(4,1,4,4,'2018-01-12 20:17:08',1,2,6,3,0),(5,1,5,5,'2018-01-12 20:40:59',2,10,30,3,0),(6,1,6,6,'2018-01-12 21:44:34',1,3,9,3,0),(7,1,7,7,'2018-01-13 13:54:45',1,1,3,3,0),(8,1,8,8,'2018-01-13 18:01:53',1,3,66,1,0);
+INSERT INTO `Zamowienia` VALUES (2,1,1,1,'2018-01-12 19:54:18',1,1,3,3,0),(3,1,3,3,'2018-01-12 19:54:45',1,1,3,3,0),(4,1,4,4,'2018-01-12 20:17:08',1,2,6,3,0),(5,1,5,5,'2018-01-12 20:40:59',2,10,30,3,0),(6,1,6,6,'2018-01-12 21:44:34',1,3,9,3,0),(7,1,7,7,'2018-01-13 13:54:45',1,1,3,3,0),(8,1,8,8,'2018-01-13 18:01:53',1,3,66,1,0),(10,9,9,9,'2018-01-13 18:31:07',2,1,1.69,1,0),(11,10,11,11,'2018-01-14 09:59:09',1,4,6.76,1,0),(12,11,12,12,'2018-01-14 10:00:59',1,1,1.69,1,0);
 /*!40000 ALTER TABLE `Zamowienia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -609,4 +584,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-13 19:18:16
+-- Dump completed on 2018-01-14 11:10:05
