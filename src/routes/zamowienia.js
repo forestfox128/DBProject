@@ -7,7 +7,7 @@ exports.list = function (req, res) {
             if (err)
                 console.log("Error Selecting : %s ", err);
 
-            res.render('zamowienia', { page_title: "Adresy - Zamowienia", data: rows });
+            res.render('zamowienia', { page_title: "Adresy - Zamówienia", data: rows });
 
 
         });
