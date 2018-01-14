@@ -39,7 +39,7 @@ ALKOSzop is currently extended with the following plugins. Versions are linked b
 
 Authors |
 | :---: |
-| [Basia Bananaszak](https://github.com/forestfox) |
+| [Basia Banaszak](https://github.com/forestfox128) |
 | [Maciej Hajduk](https://github.com/okkindel) |
 
 License
