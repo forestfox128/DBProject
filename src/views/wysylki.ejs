@@ -1,0 +1,39 @@
+<%- include layouts/header.ejs %>
+
+<title>AlkoSZOP - Wysyłki</title>
+<body>
+<div class="page-data">
+    <br>
+    <div class="data-table">
+        <table border="1" cellpadding="7" cellspacing="7">
+            <tr>
+                <th width="150px">ID Wysyłki</th>
+                <th width="150px">Koszt</th>
+                <th>Opis</th>
+                <th width="120px">Akcja</th>
+            </tr>
+
+            <% if(data.length){
+
+            for(var i = 0;i < data.length;i++) { %>
+
+            <tr>
+                <td><%= data[i].ID_Wysylka %></td>
+                <td><%= data[i].koszt %></td>
+                <td><%= data[i].opis %></td>
+                <td align="center">
+                    <a class="a-inside edit" href="../wysylki/edit/<%= data[i].ID_Wysylka %>">Edytuj</a>
+                </td>
+            </tr>
+            <% }
+
+            }else{ %>
+            <tr>
+                <td colspan="3">Brak Opcji Wysyłki</td>
+            </tr>
+            <% } %>
+
+        </table>
+    </div>
+</div>
+<%- include layouts/footer.ejs %>

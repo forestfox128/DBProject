@@ -1,0 +1,37 @@
+<%- include layouts/header.ejs %>
+
+<title>AlkoSZOP - Płatności</title>
+<body>
+<div class="page-data">
+    <br>
+    <div class="data-table">
+        <table border="1" cellpadding="7" cellspacing="7">
+            <tr>
+                <th width="150px">ID Płatności</th>
+                <th>Opis</th>
+                <th width="120px">Akcja</th>
+            </tr>
+
+            <% if(data.length){
+
+            for(var i = 0;i < data.length;i++) { %>
+
+            <tr>
+                <td><%= data[i].ID_Platnosc %></td>
+                <td><%= data[i].opis %></td>
+                <td align="center">
+                    <a class="a-inside edit" href="../patnosci/edit/<%= data[i].ID_Platnosc %>">Edytuj</a>
+                </td>
+            </tr>
+            <% }
+
+            }else{ %>
+            <tr>
+                <td colspan="3">Brak Opcji Płatności</td>
+            </tr>
+            <% } %>
+
+        </table>
+    </div>
+</div>
+<%- include layouts/footer.ejs %>

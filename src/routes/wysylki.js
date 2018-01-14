@@ -2,12 +2,12 @@ exports.list = function (req, res) {
 
     req.getConnection(function (err, connection) {
 
-        var query = connection.query('SELECT * FROM Adresy', function (err, rows) {
+        var query = connection.query('SELECT * FROM Wysylka', function (err, rows) {
 
             if (err)
                 console.log("Error Selecting : %s ", err);
 
-            res.render('adresy', {page_title: "Adresy - Przegląd", data: rows});
+            res.render('wysylki', {page_title: "Wysyłki - Przegląd", data: rows});
 
 
         });
@@ -20,12 +20,12 @@ exports.edit = function (req, res) {
 
     req.getConnection(function (err, connection) {
 
-        var query = connection.query('SELECT * FROM Adresy WHERE ID_Klient = ?', [id], function (err, rows) {
+        var query = connection.query('SELECT * FROM Wysylka WHERE ID_Wysylka = ?', [id], function (err, rows) {
 
             if (err)
                 console.log("Error Selecting : %s ", err);
 
-            res.render('edit_adresy', {page_title: "Edytuj Adresy", data: rows});
+            res.render('edit_wysylki', {page_title: "Edytuj Wysyłki", data: rows});
         });
     });
 };
@@ -39,19 +39,17 @@ exports.save = function (req, res) {
 
         var data = {
 
-            ID_Klient: input.ID_Klient,
-            ulica: input.ulica,
-            nr_domu: input.nr_domu,
-            miejscowosc: input.miejscowosc,
-            kod_pocztowy: input.kod_pocztowy
+            ID_Wysylka: input.ID_Wysylka,
+            koszt: input.koszt,
+            opis: input.opis
 
         };
 
-        connection.query("UPDATE Adresy set ? WHERE ID_Klient = ? ", [data, id], function (err, rows) {
+        connection.query("UPDATE Wysylka set ? WHERE ID_Wysylka = ? ", [data, id], function (err, rows) {
             if (err)
                 console.log("Error Updating : %s ", err);
             else
-                res.redirect('/adresy');
+                res.redirect('/wysylki');
 
         });
 

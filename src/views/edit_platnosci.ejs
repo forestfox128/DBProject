@@ -1,0 +1,33 @@
+<%- include layouts/header.ejs %>
+<title>AlkoSzop - Panel Administracyjny</title>
+<div class="page-data">
+
+    <form method="post" action="/platnosci/edit/<%= data[0].ID_Wysylka %>">
+        <table cellpadding="11">
+            <tr>
+                <td class="label">ID Płatności</td>
+                <td>:
+                    <input type="text" name="ID_Platnosc" value="<%= data[0].ID_Platnosc %>" required readonly
+                           class="input-disabled">
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Opis</td>
+                <td>:
+                    <input type="text" name="opis" value="<%= data[0].opis %>" required>
+                </td>
+            </tr>
+            <tr>
+                <td class="label"></td>
+                <td>
+                    &nbsp;
+                    <input type="submit" name="submit" value="Zapisz">
+                    <input type="button" name="cancel" value="Anuluj" class="cancel" onClick="cancelEditPlatnosc()">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+</div>
+
+<%- include layouts/footer.ejs %>

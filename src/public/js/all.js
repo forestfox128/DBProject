@@ -22,3 +22,11 @@ function cancelAddTyp(){
 function cancelEditAdress(){
     window.location.href = '/adresy';
 }
+function cancelEditWysylka(){
+    window.location.href = '/wysylki';
+}
+function cancelEditPlatnosc(){
+    window.location.href = '/platnosci';
+}
+
+

@@ -1,29 +1,34 @@
 body {
-  margin:0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background:#eee;
-  width:100%;
-  height:100%;
+    margin: 0;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background: #eee;
+    width: 100%;
+    height: 100%;
 }
 
-.input-disabled{background-color:#EBEBE4;border:1px solid #ABADB3;padding:2px 1px;}
-
-*{
-
-    border-radius:0px;
+.input-disabled {
+    background-color: #EBEBE4;
+    border: 1px solid #ABADB3;
+    padding: 2px 1px;
 }
+
+* {
+
+    border-radius: 0px;
+}
+
 a {
-  color: #00B7FF;
+    color: #00B7FF;
 }
 
-#wrapper{
+#wrapper {
 
-    margin-top:30px;
-    width:90%;
-    min-height:600px;
-    margin-left:5%;
-    border:1px solid #ddd;
-    background:#fff;
+    margin-top: 30px;
+    width: 90%;
+    min-height: 600px;
+    margin-left: 5%;
+    border: 1px solid #ddd;
+    background: #fff;
 
 }
 
@@ -32,53 +37,120 @@ a {
     padding: 0 5px;
 }
 
-.page-container{padding:20px;}
-.page-data{padding:10px;}
-.page-header{
-    padding:2px;
-    padding-left:40px;
-    background:#123;color:#FEFFFD;
-}
-.data-btn{padding-left:8px}
-.data-btn button{
-    padding:10px 20px;background:#123;border:1px solid #fff;
-    color:#FEFFFD;font-weight:bold;
+.page-container {
+    padding: 20px;
 }
 
-.data-table{padding-left:10px;}
-.data-table table{border-collapse:collapse;border:1px solid #ddd;width:100%}
-.a-inside{padding:4px 10px;border:1px solid #fff;text-decoration:none;}
-.a-inside.edit{background-color:#005000;color:#fff;}
-.a-inside.buy{background-color:#123;color:#fff;}
-.a-inside.search{background-color:#123;color:#fff;height: 28px;}
-.a-inside.delete{background-color:#500000;color:#fff;}
-
-input[type="text"]{
-
-    border:1px solid #ddd;
-    height:26px;
-    width:300px;
-}
-.cancel{
-    background-color:#D23641;color:#fff;
-    border:1px solid #800000;color:#fff;
-    padding:8px 35px;font-weight:bold;
+.page-data {
+    padding: 10px;
 }
 
-.bigbtn{
-    background-color:#223344;color:#fff;
-    border:1px solid #000515;padding:8px 35px;font-weight:bold;
+.page-header {
+    padding: 2px;
+    padding-left: 40px;
+    background: #123;
+    color: #FEFFFD;
 }
 
-input[type="submit"]{
-
-    border:1px solid #123;color:#fff;
-    padding:8px 35px;font-weight:bold;
-    background:#123;
+.data-btn {
+    padding-left: 8px
 }
-.label_input{font-weight:bold; text-align: right; outline:none; border-width: 0 !important;}
 
-textarea{ border:1px solid #ddd;width:296px;}
-.label{font-weight:bold;}
+.data-btn button {
+    padding: 10px 20px;
+    background: #123;
+    border: 1px solid #fff;
+    color: #FEFFFD;
+    font-weight: bold;
+}
 
-#footer{margin-left:82%;margin-top:2%}
+.data-table {
+    padding-left: 10px;
+}
+
+.data-table table {
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    width: 100%
+}
+
+.a-inside {
+    padding: 4px 10px;
+    border: 1px solid #fff;
+    text-decoration: none;
+}
+
+.a-inside.edit {
+    background-color: #005000;
+    color: #fff;
+}
+
+.a-inside.buy {
+    background-color: #123;
+    color: #fff;
+}
+
+.a-inside.search {
+    background-color: #123;
+    color: #fff;
+    height: 28px;
+}
+
+.a-inside.delete {
+    background-color: #500000;
+    color: #fff;
+}
+
+input[type="text"] {
+
+    border: 1px solid #ddd;
+    height: 26px;
+    width: 300px;
+}
+
+.cancel {
+    background-color: #D23641;
+    color: #fff;
+    border: 1px solid #800000;
+    color: #fff;
+    padding: 8px 35px;
+    font-weight: bold;
+}
+
+.bigbtn {
+    background-color: #223344;
+    color: #fff;
+    border: 1px solid #000515;
+    padding: 8px 35px;
+    font-weight: bold;
+}
+
+input[type="submit"] {
+
+    border: 1px solid #123;
+    color: #fff;
+    padding: 8px 35px;
+    font-weight: bold;
+    background: #123;
+}
+
+.label_input {
+    font-weight: bold;
+    text-align: right;
+    outline: none;
+    border-width: 0 !important;
+}
+
+textarea {
+    border: 1px solid #ddd;
+    width: 296px;
+}
+
+.label {
+    font-weight: bold;
+}
+
+#footer {
+    margin-left: 82%;
+    margin-top: 2%
+}

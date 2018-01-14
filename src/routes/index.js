@@ -13,7 +13,7 @@ exports.index = function (req, res) {
                 console.log("Error Selecting : %s ", err);
             }
 
-            res.render('index', {page_title: 'AlkoSZOP - Strona Główna', data: rows, user: nazwa});
+            res.render('index', {page_title: 'ALKOSzop - Strona Główna', data: rows, user: nazwa});
         });
     });
 };
