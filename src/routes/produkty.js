@@ -16,7 +16,15 @@ exports.list = function (req, res) {
 };
 
 exports.add = function (req, res) {
-    res.render('add_produkty', { page_title: "Dadaj Produkt" });
+
+    req.getConnection(function (err, connection) {
+
+        var query = connection.query('SELECT MAX (ID_Produkt) AS "ID" FROM Produkty', function (err, rows) {
+            if (err)
+                console.log("Error Selecting : %s ", err);
+            res.render('add_produkty', {page_title: "Dadaj Produkt", data: rows});
+        });
+    });
 };
 
 exports.edit = function (req, res) {
