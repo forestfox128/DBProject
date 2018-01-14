@@ -20,7 +20,7 @@ exports.edit = function (req, res) {
 
     req.getConnection(function (err, connection) {
 
-        var query = connection.query('SELECT * FROM Platnosc WHERE ID_Wysylka = ?', [id], function (err, rows) {
+        var query = connection.query('SELECT * FROM Platnosc WHERE ID_Platnosc = ?', [id], function (err, rows) {
 
             if (err)
                 console.log("Error Selecting : %s ", err);
