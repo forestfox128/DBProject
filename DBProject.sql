@@ -39,6 +39,7 @@ CREATE TABLE `Adresy` (
 
 LOCK TABLES `Adresy` WRITE;
 /*!40000 ALTER TABLE `Adresy` DISABLE KEYS */;
+INSERT INTO `Adresy` VALUES (1,'koszarowa','5','Gdynia','12345'),(2,'Swierkowa','555','Opole','88989'),(3,'1111','11','1','1');
 /*!40000 ALTER TABLE `Adresy` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -89,6 +90,7 @@ CREATE TABLE `Klient` (
 
 LOCK TABLES `Klient` WRITE;
 /*!40000 ALTER TABLE `Klient` DISABLE KEYS */;
+INSERT INTO `Klient` VALUES (1,'Basia','Banaszak','-',11111111,'-'),(2,'B','Banaszak','-',11111111,'-'),(3,'A!n','1','11',11111111,'1');
 /*!40000 ALTER TABLE `Klient` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -112,6 +114,7 @@ CREATE TABLE `Platnosc` (
 
 LOCK TABLES `Platnosc` WRITE;
 /*!40000 ALTER TABLE `Platnosc` DISABLE KEYS */;
+INSERT INTO `Platnosc` VALUES (0,'Poczta Polska');
 /*!40000 ALTER TABLE `Platnosc` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -168,7 +171,7 @@ CREATE TABLE `Produkty` (
 
 LOCK TABLES `Produkty` WRITE;
 /*!40000 ALTER TABLE `Produkty` DISABLE KEYS */;
-INSERT INTO `Produkty` VALUES (1,1,'Wodka',21.37,'Czysta, gesta i swieza.',1,412),(2,1,'Koniak',39.55,'Ukrainsko - Francuski winiak.',2,319),(3,2,'Kasztelan',3.29,'Browarnik dopilnowal i piwa nie spasteryzowal.',3,3444),(4,3,'Tequiller',2.55,'Piwo o smaku wodki z kuktasa.',3,242),(5,3,'Namyslow',2.99,'Miedzynarodowy jasny lager.',3,101),(6,4,'Amarena',5.05,'Wspanaly, niepowtarzalny smak.',4,3467),(7,5,'Shatoblou',48.99,'Wloskie wino z poludniowych stokow Toskanii.',4,356);
+INSERT INTO `Produkty` VALUES (1,1,'Wodka',21.37,'Czysta, gesta i swieza.',1,412),(2,1,'Koniak',39.55,'Ukrainsko - Francuski winiak.',2,307),(3,2,'Kasztelan',3.29,'Browarnik dopilnowal i piwa nie spasteryzowal.',3,3444),(4,3,'Tequiller',2.55,'Piwo o smaku wodki z kuktasa.',3,242),(5,3,'Namyslow',2.99,'Miedzynarodowy jasny lager.',3,101),(6,4,'Amarena',5.05,'Wspanaly, niepowtarzalny smak.',4,2466),(7,5,'Shatoblou',48.99,'Wloskie wino z poludniowych stokow Toskanii.',4,356);
 /*!40000 ALTER TABLE `Produkty` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -292,6 +295,7 @@ CREATE TABLE `Status_zamowienia` (
 
 LOCK TABLES `Status_zamowienia` WRITE;
 /*!40000 ALTER TABLE `Status_zamowienia` DISABLE KEYS */;
+INSERT INTO `Status_zamowienia` VALUES (0,'2018-01-14 14:07:54','nieprzygotowany');
 /*!40000 ALTER TABLE `Status_zamowienia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -340,6 +344,7 @@ CREATE TABLE `Wysylka` (
 
 LOCK TABLES `Wysylka` WRITE;
 /*!40000 ALTER TABLE `Wysylka` DISABLE KEYS */;
+INSERT INTO `Wysylka` VALUES (0,9.5,'przelew');
 /*!40000 ALTER TABLE `Wysylka` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -370,8 +375,43 @@ CREATE TABLE `Zamowienia` (
 
 LOCK TABLES `Zamowienia` WRITE;
 /*!40000 ALTER TABLE `Zamowienia` DISABLE KEYS */;
+INSERT INTO `Zamowienia` VALUES (0,1,0,0,'2018-01-14 14:07:54',2,12,474.6,0);
 /*!40000 ALTER TABLE `Zamowienia` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER ZamowieniaDel
+AFTER DELETE ON Zamowienia
+FOR EACH ROW
+BEGIN
+  DECLARE idWys INT;
+  DECLARE idPlat INT;
+  DECLARE idST INT;
+  SET idWys = old.ID_Wysylki;
+
+  SET idPlat = old.ID_Platnosci;
+
+  SET idST = old.ID_Zamowienia;
+
+  DELETE FROM Wysylka WHERE Wysylka.ID_Wysylka = idWys;
+
+  DELETE FROM Platnosc WHERE Platnosc.ID_Platnosc = idPlat;
+
+  DELETE FROM Status_zamowienia WHERE Status_zamowienia.ID_Zamowienia = idST;
+
+  END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Dumping routines for database 'DBProject'
@@ -593,4 +633,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-14 15:03:40
+-- Dump completed on 2018-01-14 15:21:35
