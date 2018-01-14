@@ -39,7 +39,6 @@ CREATE TABLE `Adresy` (
 
 LOCK TABLES `Adresy` WRITE;
 /*!40000 ALTER TABLE `Adresy` DISABLE KEYS */;
-INSERT INTO `Adresy` VALUES (1,'fff','333','ddd','222'),(2,'w','w','w','2'),(3,'a','a','a','2'),(4,'s','s','s','2'),(5,'w','w','w','w'),(6,'f','f','f','5'),(9,'pl grunwaldzki','1','Warszawa','55555'),(11,'Prusa','1','Warszawa','12312');
 /*!40000 ALTER TABLE `Adresy` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,7 +89,6 @@ CREATE TABLE `Klient` (
 
 LOCK TABLES `Klient` WRITE;
 /*!40000 ALTER TABLE `Klient` DISABLE KEYS */;
-INSERT INTO `Klient` VALUES (1,'sss','sss','-',8888,'-'),(2,'s','s','s',4,'3'),(3,'a','a','a',2,'2'),(4,'q','q','q',22,'1'),(5,'s','s','s',3,'3'),(6,'s','s','aaaa',2222,'222222'),(7,'Ala','Kowalska','-',888888888,'-'),(8,'d','dd','d',2222,'-'),(9,'aNIA','Kowalska','-',1111111111,'-'),(10,'Maciej','Hajduk','-',69696968,'-'),(11,'Adrian','Mucza','-',567567567,'-');
 /*!40000 ALTER TABLE `Klient` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,7 +112,6 @@ CREATE TABLE `Platnosc` (
 
 LOCK TABLES `Platnosc` WRITE;
 /*!40000 ALTER TABLE `Platnosc` DISABLE KEYS */;
-INSERT INTO `Platnosc` VALUES (1,'platnosc'),(3,'platnosc'),(4,'platnosc'),(5,'platnosc'),(6,'platnosc'),(7,'platnosc'),(8,'Poczta Polska'),(9,'Poczta Polska'),(11,'Poczta Polska'),(12,'Poczta Polska');
 /*!40000 ALTER TABLE `Platnosc` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -138,7 +135,7 @@ CREATE TABLE `Producent` (
 
 LOCK TABLES `Producent` WRITE;
 /*!40000 ALTER TABLE `Producent` DISABLE KEYS */;
-INSERT INTO `Producent` VALUES (1,NULL),(9,NULL);
+INSERT INTO `Producent` VALUES (1,'Bimbrownia Bialystok'),(2,'Polska Grupa Piwowarska'),(3,'Browar Namyslow'),(4,'Biedronka S.A.'),(5,'Franzua Sietoblo');
 /*!40000 ALTER TABLE `Producent` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,7 +168,7 @@ CREATE TABLE `Produkty` (
 
 LOCK TABLES `Produkty` WRITE;
 /*!40000 ALTER TABLE `Produkty` DISABLE KEYS */;
-INSERT INTO `Produkty` VALUES (1,1,'Kustosz',1.69,'dobre, tanie, wykwintne piwo',5,5),(2,1,'Amarena',1.69,'dobre, tanie, wykwintne wino',1,1),(3,1,'Chardonnay',25.3,'wino polwytrawne',1,12);
+INSERT INTO `Produkty` VALUES (1,1,'Wodka',21.37,'Czysta, gesta i swieza.',1,412),(2,1,'Koniak',39.55,'Ukrainsko - Francuski winiak.',2,319),(3,2,'Kasztelan',3.29,'Browarnik dopilnowal i piwa nie spasteryzowal.',3,3444),(4,3,'Tequiller',2.55,'Piwo o smaku wodki z kuktasa.',3,242),(5,3,'Namyslow',2.99,'Miedzynarodowy jasny lager.',3,101),(6,4,'Amarena',5.05,'Wspanaly, niepowtarzalny smak.',4,3467),(7,5,'Shatoblou',48.99,'Wloskie wino z poludniowych stokow Toskanii.',4,356);
 /*!40000 ALTER TABLE `Produkty` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -295,7 +292,6 @@ CREATE TABLE `Status_zamowienia` (
 
 LOCK TABLES `Status_zamowienia` WRITE;
 /*!40000 ALTER TABLE `Status_zamowienia` DISABLE KEYS */;
-INSERT INTO `Status_zamowienia` VALUES (1,'2018-01-12 19:54:18','nieprzygotowany'),(3,'2018-01-12 19:54:45','nieprzygotowany'),(4,'2018-01-12 20:17:08','nieprzygotowany'),(5,'2018-01-12 20:40:59','nieprzygotowany'),(6,'2018-01-12 21:44:34','nieprzygotowany'),(7,'2018-01-13 13:54:45','nieprzygotowany'),(8,'2018-01-13 18:01:53','nieprzygotowany'),(9,'2018-01-13 18:31:07','nieprzygotowany'),(11,'2018-01-14 09:59:09','nieprzygotowany'),(12,'2018-01-14 10:00:59','nieprzygotowany');
 /*!40000 ALTER TABLE `Status_zamowienia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -319,7 +315,7 @@ CREATE TABLE `Typ` (
 
 LOCK TABLES `Typ` WRITE;
 /*!40000 ALTER TABLE `Typ` DISABLE KEYS */;
-INSERT INTO `Typ` VALUES (1,NULL),(2,NULL),(5,NULL);
+INSERT INTO `Typ` VALUES (1,'Wódki'),(2,'Koniaki'),(3,'Piwa'),(4,'Wina');
 /*!40000 ALTER TABLE `Typ` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -344,7 +340,6 @@ CREATE TABLE `Wysylka` (
 
 LOCK TABLES `Wysylka` WRITE;
 /*!40000 ALTER TABLE `Wysylka` DISABLE KEYS */;
-INSERT INTO `Wysylka` VALUES (1,9.5,'kurier'),(3,9.5,'kurier'),(4,9.5,'kurier'),(5,9.5,'kurier'),(6,9.5,'kurier'),(7,9.5,'kurier'),(8,9.5,'przelew'),(9,9.5,'przelew'),(11,9.5,'przelew'),(12,9.5,'przelew');
 /*!40000 ALTER TABLE `Wysylka` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -356,7 +351,7 @@ DROP TABLE IF EXISTS `Zamowienia`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Zamowienia` (
-  `ID_Zamowienia` int(11) NOT NULL AUTO_INCREMENT,
+  `ID_Zamowienia` int(11) NOT NULL,
   `ID_Klient` int(11) NOT NULL,
   `ID_Platnosci` int(11) NOT NULL,
   `ID_Wysylki` int(11) NOT NULL,
@@ -364,10 +359,9 @@ CREATE TABLE `Zamowienia` (
   `ID_Produnkt` int(11) NOT NULL,
   `ilosc` int(11) NOT NULL,
   `koszt` float NOT NULL,
-  `platnosc` int(11) NOT NULL,
   `faktura` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`ID_Zamowienia`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -376,7 +370,6 @@ CREATE TABLE `Zamowienia` (
 
 LOCK TABLES `Zamowienia` WRITE;
 /*!40000 ALTER TABLE `Zamowienia` DISABLE KEYS */;
-INSERT INTO `Zamowienia` VALUES (2,1,1,1,'2018-01-12 19:54:18',1,1,3,3,0),(3,1,3,3,'2018-01-12 19:54:45',1,1,3,3,0),(4,1,4,4,'2018-01-12 20:17:08',1,2,6,3,0),(5,1,5,5,'2018-01-12 20:40:59',2,10,30,3,0),(6,1,6,6,'2018-01-12 21:44:34',1,3,9,3,0),(7,1,7,7,'2018-01-13 13:54:45',1,1,3,3,0),(8,1,8,8,'2018-01-13 18:01:53',1,3,66,1,0),(10,9,9,9,'2018-01-13 18:31:07',2,1,1.69,1,0),(11,10,11,11,'2018-01-14 09:59:09',1,4,6.76,1,0),(12,11,12,12,'2018-01-14 10:00:59',1,1,1.69,1,0);
 /*!40000 ALTER TABLE `Zamowienia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -506,48 +499,64 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertZamowienia`(IN IDk   INT, IN IDprod INT, IN amount INT, IN sum FLOAT)
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertZamowienia`(IN IDk INT, IN IDprod INT, IN amount INT, IN sum FLOAT)
 BEGIN
 
 
     DECLARE currentAmount INT;
-    DECLARE id INT;
+    DECLARE id_zam INT;
+    DECLARE id_wys INT;
+    DECLARE id_pla INT;
 
 
-    SET currentAmount = (SELECT Produkty.ilosc FROM Produkty
-    WHERE Produkty.ID_Produkt = IDprod);
+    SET currentAmount = (SELECT Produkty.ilosc
+                         FROM Produkty
+                         WHERE Produkty.ID_Produkt = IDprod);
 
-    SET id = (SELECT MAX(Zamowienia.ID_Zamowienia) FROM Zamowienia);
-    IF id is null THEN
-      SET id = 1;
-    ELSE
-      SET id = id +1;
-    END IF;
+    SET id_zam = (SELECT MAX(Zamowienia.ID_Zamowienia) + 1
+                  FROM Zamowienia);
+    IF id_zam IS NULL
+    THEN
+      SET id_zam = 0; END IF;
 
+    SET id_wys = (SELECT MAX(Zamowienia.ID_Zamowienia) + 1
+                  FROM Zamowienia);
+    IF id_wys IS NULL
+    THEN
+      SET id_wys = 0; END IF;
+
+    SET id_pla = (SELECT MAX(Zamowienia.ID_Zamowienia) + 1
+                  FROM Zamowienia);
+    IF id_pla IS NULL
+    THEN
+      SET id_pla = 0; END IF;
 
     START TRANSACTION;
 
-    INSERT INTO `Zamowienia` (`ID_Klient`, `ID_Platnosci`, `ID_Wysylki`, `ID_Produnkt`,`ilosc`, `koszt`,`platnosc`,`faktura`) VALUES
-      (IDk,id,id,IDprod,amount,sum,1,false);
+    INSERT INTO `Zamowienia` (`ID_Zamowienia`, `ID_Klient`, `ID_Platnosci`, `ID_Wysylki`, `ID_Produnkt`, `ilosc`, `koszt`, `faktura`)
+    VALUES
+      (id_zam, IDk, id_pla, id_wys, IDprod, amount, sum, FALSE);
 
-    INSERT INTO `Wysylka`(`ID_Wysylka`,`koszt`,`opis`) VALUES
-      (id,9.5,'przelew');
+    INSERT INTO `Wysylka` (`ID_Wysylka`, `koszt`, `opis`) VALUES
+      (id_wys, 9.5, 'przelew');
 
-    INSERT INTO `Platnosc`(`ID_Platnosc`,`opis`) VALUES
-      (id, 'Poczta Polska');
+    INSERT INTO `Platnosc` (`ID_Platnosc`, `opis`) VALUES
+      (id_pla, 'Poczta Polska');
 
-    INSERT INTO `Status_zamowienia`(`ID_Zamowienia`,`status_zamowienia`) VALUES
-      (id,'nieprzygotowany');
+    INSERT INTO `Status_zamowienia` (`ID_Zamowienia`, `status_zamowienia`) VALUES
+      (id_zam, 'nieprzygotowany');
 
     IF currentAmount < amount
-      THEN
-      ROLLBACK ;
-      ELSE
+    THEN
+      ROLLBACK;
+    ELSE
       COMMIT;
-      UPDATE Produkty SET Produkty.ilosc = currentAmount - amount WHERE Produkty.ID_Produkt = IDprod;
+      UPDATE Produkty
+      SET Produkty.ilosc = currentAmount - amount
+      WHERE Produkty.ID_Produkt = IDprod;
     END IF;
 
-END ;;
+  END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
@@ -584,4 +593,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-14 11:10:05
+-- Dump completed on 2018-01-14 15:03:40
