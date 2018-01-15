@@ -52,6 +52,7 @@ app.get('/buy_klienci', routes.buy_klienci);
 app.post('/buy_klienci', routes.save_klienci);
 app.get('/buy_adresy', routes.buy_adresy);
 app.post('/buy_adresy', routes.save_adresy);
+app.get('/szopy', routes.szopy);
 app.get('/producenci', producenci.list);
 app.get('/producenci/add', producenci.add);
 app.post('/producenci/add', producenci.save);

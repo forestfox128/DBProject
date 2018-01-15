@@ -132,3 +132,7 @@ exports.save_adresy = function (req, res) {
         });
     });
 };
+
+exports.szopy = function (req, res) {
+    res.render('szopy', {page_title: "Foto Szopa Bez Fotoszopa"});
+};
