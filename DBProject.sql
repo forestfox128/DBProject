@@ -39,7 +39,7 @@ CREATE TABLE `Adresy` (
 
 LOCK TABLES `Adresy` WRITE;
 /*!40000 ALTER TABLE `Adresy` DISABLE KEYS */;
-INSERT INTO `Adresy` VALUES (1,'koszarowa','5','Gdynia','12345'),(2,'Swierkowa','555','Opole','88989'),(3,'1111','11','1','1');
+INSERT INTO `Adresy` VALUES (2,'Sklodowskiej','46/3','Wroclaw','50369');
 /*!40000 ALTER TABLE `Adresy` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,7 +90,7 @@ CREATE TABLE `Klient` (
 
 LOCK TABLES `Klient` WRITE;
 /*!40000 ALTER TABLE `Klient` DISABLE KEYS */;
-INSERT INTO `Klient` VALUES (1,'Basia','Banaszak','-',11111111,'-'),(2,'B','Banaszak','-',11111111,'-'),(3,'A!n','1','11',11111111,'1');
+INSERT INTO `Klient` VALUES (2,'Maciej','Hajduk','BIURO KONSTRUKCYJNO-BUDOWLANE HAJDUK',732004772,'8941198576');
 /*!40000 ALTER TABLE `Klient` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,7 +114,7 @@ CREATE TABLE `Platnosc` (
 
 LOCK TABLES `Platnosc` WRITE;
 /*!40000 ALTER TABLE `Platnosc` DISABLE KEYS */;
-INSERT INTO `Platnosc` VALUES (0,'Poczta Polska');
+INSERT INTO `Platnosc` VALUES (0,'gotówka');
 /*!40000 ALTER TABLE `Platnosc` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,7 +171,7 @@ CREATE TABLE `Produkty` (
 
 LOCK TABLES `Produkty` WRITE;
 /*!40000 ALTER TABLE `Produkty` DISABLE KEYS */;
-INSERT INTO `Produkty` VALUES (1,1,'Wodka',21.37,'Czysta, gesta i swieza.',1,412),(2,1,'Koniak',39.55,'Ukrainsko - Francuski winiak.',2,307),(3,2,'Kasztelan',3.29,'Browarnik dopilnowal i piwa nie spasteryzowal.',3,3444),(4,3,'Tequiller',2.55,'Piwo o smaku wodki z kuktasa.',3,242),(5,3,'Namyslow',2.99,'Miedzynarodowy jasny lager.',3,101),(6,4,'Amarena',5.05,'Wspanaly, niepowtarzalny smak.',4,2466),(7,5,'Shatoblou',48.99,'Wloskie wino z poludniowych stokow Toskanii.',4,356);
+INSERT INTO `Produkty` VALUES (1,1,'Wodka',21.37,'Czysta, gesta i swieza.',1,412),(2,1,'Koniak',39.55,'Ukrainsko - Francuski winiak.',2,307),(3,2,'Kasztelan',3.29,'Browarnik dopilnowal i piwa nie spasteryzowal.',3,3439),(4,3,'Tequiller',2.55,'Piwo o smaku wodki z kuktasa.',3,242),(5,3,'Namyslow',2.99,'Miedzynarodowy jasny lager.',3,101),(6,4,'Amarena',4.55,'Wspanaly, niepowtarzalny smak.',4,2466),(7,5,'Shardone',48.99,'Wloskie wino z poludniowych stokow Toskanii.',4,356);
 /*!40000 ALTER TABLE `Produkty` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -295,7 +295,7 @@ CREATE TABLE `Status_zamowienia` (
 
 LOCK TABLES `Status_zamowienia` WRITE;
 /*!40000 ALTER TABLE `Status_zamowienia` DISABLE KEYS */;
-INSERT INTO `Status_zamowienia` VALUES (0,'2018-01-14 14:07:54','nieprzygotowany');
+INSERT INTO `Status_zamowienia` VALUES (0,'2018-01-14 18:47:33','nieprzygotowany');
 /*!40000 ALTER TABLE `Status_zamowienia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -344,7 +344,7 @@ CREATE TABLE `Wysylka` (
 
 LOCK TABLES `Wysylka` WRITE;
 /*!40000 ALTER TABLE `Wysylka` DISABLE KEYS */;
-INSERT INTO `Wysylka` VALUES (0,9.5,'przelew');
+INSERT INTO `Wysylka` VALUES (0,9.5,'kurier');
 /*!40000 ALTER TABLE `Wysylka` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -375,7 +375,7 @@ CREATE TABLE `Zamowienia` (
 
 LOCK TABLES `Zamowienia` WRITE;
 /*!40000 ALTER TABLE `Zamowienia` DISABLE KEYS */;
-INSERT INTO `Zamowienia` VALUES (0,1,0,0,'2018-01-14 14:07:54',2,12,474.6,0);
+INSERT INTO `Zamowienia` VALUES (0,2,0,0,'2018-01-14 18:47:33',3,3,9.87,0);
 /*!40000 ALTER TABLE `Zamowienia` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -542,7 +542,6 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `insertZamowienia`(IN IDk INT, IN IDprod INT, IN amount INT, IN sum FLOAT)
 BEGIN
 
-
     DECLARE currentAmount INT;
     DECLARE id_zam INT;
     DECLARE id_wys INT;
@@ -578,10 +577,10 @@ BEGIN
       (id_zam, IDk, id_pla, id_wys, IDprod, amount, sum, FALSE);
 
     INSERT INTO `Wysylka` (`ID_Wysylka`, `koszt`, `opis`) VALUES
-      (id_wys, 9.5, 'przelew');
+      (id_wys, 9.5, 'Poczta Polska');
 
     INSERT INTO `Platnosc` (`ID_Platnosc`, `opis`) VALUES
-      (id_pla, 'Poczta Polska');
+      (id_pla, 'przelew');
 
     INSERT INTO `Status_zamowienia` (`ID_Zamowienia`, `status_zamowienia`) VALUES
       (id_zam, 'nieprzygotowany');
@@ -633,4 +632,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-14 15:21:35
+-- Dump completed on 2018-01-15 15:47:14
